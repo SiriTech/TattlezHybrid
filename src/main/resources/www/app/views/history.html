@@ -1,0 +1,45 @@
+<!-- HEADER SECTION -->
+<div class="row">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" ng-click="loadContacts()">Chats</a>
+      <span class="glyphicon glyphicon-comment add-icon-right" ng-click="loadContacts()"></span>
+    </div>
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- BODY SECTION -->
+<div class="row" ng-repeat="hist in history| orderBy : '-on' : false" ng-click="chat(hist.contactId)">
+	<div class="col-xs-3">
+		<img ng-src="{{hist.photo}}" ng-if="hist.photo" class="img-responsive" />
+				<img src="app/images/default_profile_M.jpg" ng-if="!hist.photo" class="img-responsive" />
+	</div>
+	<div class="col-xs-9">
+		<b ng-bind="hist.contactName"></b>
+	</div>
+</div>
+<div class="content">
+    <div ng-repeat="hist in history| orderBy : '-on' : false" ng-click="chat(hist.contactId)">
+		<div class="friendsdiv">
+			<div style="float: left;width: 8%">
+				<img ng-src="{{hist.photo}}" ng-if="hist.photo" class="img-responsive" />
+				<img src="app/images/default_profile_M.jpg" ng-if="!hist.photo" class="img-responsive" />
+			</div>
+			
+			<div style="float: left; margin-left: 5px;width:90%;">
+				<b ng-bind="hist.contactName"></b>
+				<div style="clear:both;">
+				<div style="float:left;width:60%;height:20px;overflow:hidden;">
+					<span ng-bind="hist.lastMessage" style="color:rgb(23, 151, 207);"></span>
+				</div>
+				
+				<div style="float:left;width:40%;">
+					<span style="float:right;font-size: 12px;color:#747474;font-family: cursive;">{{hist.on|date:'medium'}}</span>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

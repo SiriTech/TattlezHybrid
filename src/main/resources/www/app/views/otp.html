@@ -1,0 +1,28 @@
+<div class="row">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Authenticate</a>
+    </div>
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- Displays alert when OTP is invalid-->
+<div ng-if="showAlert" class="alert alert-danger alert-dismissible" role="alert">
+    <strong>Warning!</strong>Invalid OTP entered. Please check.
+</div>
+
+<div class="content-vertical-middle div-otp content">
+    <span>Enter OTP (one time password) that you have received on your mobile</span>
+    <div class="form-group">
+    <input type="text"
+           placeholder="Enter OTP number" ng-model="otpInput" class="form-control" ng-enter="validateOtp()" ng-required="true" focus="true" />
+    </div>
+    <div style="text-align: center">
+        <!--Resend otp button displays after timeout-->
+        <button class="btn btn-primary" type="submit" ng-if="enableResendOtp" ng-click="resendOtp()">Resend OTP</button>
+        <button class="btn btn-warning" type="submit" ng-disabled="enableResendOtp" ng-click="validateOtp()">Validate</button>
+        <button class="btn btn-default" type="submit" ng-click="gotoJoinForm()">Cancel</button>
+    </div>
+</div>
+</div>

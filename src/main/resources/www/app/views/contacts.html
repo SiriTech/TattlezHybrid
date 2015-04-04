@@ -1,0 +1,61 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand">Contacts</a>
+      <span class="glyphicon glyphicon-user add-icon-right" ng-click="addNewContact()"></span>
+    </div>
+    </div><!-- /.container-fluid -->
+</nav>
+<div id="overlay" class="{{showModal}}">
+	<div class="modal-header">
+		<h3 class="modal-title">Delete Contact?</h3>
+	</div>
+	<div class="modal-body">
+		Are you sure, you want to delete the contact?
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="confirmDeleteContact()">Ok</button>
+		<button class="btn btn-warning" ng-click="cancelDeleteContact()">Cancel</button>
+	</div>
+</div>
+<div id="fade" class="{{showModal}}"></div>
+<div class="content contacts-list">
+	<div ng-repeat="contact in contacts">
+		<div class="friendsdiv">
+			
+			<div style="float: left">
+				<img ng-src="{{contact.photo}}" ng-if="contact.photo" class="img-default" width="35px" height="38px" />
+				<img src="app/images/default_profile_M.jpg" ng-if="!contact.photo" class="img-default" width="35px" height="38px" />
+			</div>
+			
+			<div style="float: left; margin-left: 5px;">
+				<b ng-bind="contact.contactName"></b>
+				<div>
+					<span ng-bind="contact.contactNumber"></span>
+				</div>
+				
+			</div>
+			<div style="float: right;">
+				<div class="btn-group btn-group-custom" dropdown is-open="contact.isopen">
+					<button type="button" class="btn btn-default dropdown-toggle btn-custom">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu dropdown-menu-custom" role="menu" ng-switch="contact.group">
+						<li><a ng-click="chat(contact.id)"><span class="glyphicon glyphicon-comment"></span>&nbsp;Chat</a></li>
+						<li class="divider"></li>
+						<li><a ng-click="Call(contact.id,'audio')"><span class="glyphicon glyphicon-earphone"></span>&nbsp;Audio Call</a></li>
+						<li class="divider"></li>
+						<li><a ng-click="Call(contact.id,'video')"><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;Video Call</a></li>
+                        <li class="divider"></li>
+                        <li ng-switch-when="false"><a ng-click="contactInfo(contact.id, contact.group)"><span class="glyphicon glyphicon-user"></span>&nbsp;Contact Info</a></li>
+                        <li ng-switch-when="true"><a ng-click="contactInfo(contact.id, contact.group)"><span class="fa fa-group"></span>&nbsp;Group Info</a></li>
+						<li class="divider"></li>
+						<li><a ng-click="deleteContact($index)"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete {{contact.group ? 'Group' : 'Contact'}}</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

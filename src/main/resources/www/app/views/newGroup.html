@@ -1,0 +1,59 @@
+<div class="heading" xmlns="http://www.w3.org/1999/html"><span class="text">New Group</span></div>
+<div class="div-join content">
+
+    <div>
+        <img ng-src="../images/default_profile_M.jpg" class="img-default" width="50px" height="50px" />
+        <span>Please provide group subject and optional group icon</span>
+    </div>
+
+    <div style="padding-top: 20px;height: 220px">
+        <form name="newGroupForm" ng-submit="createGroup()" style="height: 200px">
+
+            <div class="form-group">
+                <span>Add Group Name</span>
+                <input type="text" placeholder="Enter group subject" ng-model="groupName" class="form-control" ng-required="true" focus="true"/>
+            </div>
+            <div class="form-group">
+                <span>Add Group Participants</span>
+                <div style="height: 82px;overflow-y: scroll;" class="form-group">
+                    <div ng-repeat="contact in contactsList | filter:{group:false}">
+                        <ul class="margin-bottom-small">
+                            <input type="checkbox" ng-model="contact.selected" ng-change="handleAddedGroupContacts(contact)">{{ contact.contactName }} - {{ contact.contactNumber }}</input>
+                        </ul>
+                    </div>
+                </div>
+                    <!--<input type="checkbox" placeholder="Type contact name..." ng-model="contactObject" class="form-control" ng-required="true"/>-->
+                <div style="text-align: center" class="form-group">
+                    <button class="btn btn-warning" type="submit" ng-disabled="!newGroupForm.$valid">Create</button>
+                    <button class="btn btn-default" type="button" ng-click="gotoContacts()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<!-- FOOTER SECTION -->
+<div class="footer" data-align="center">
+    <div class="pull-right padding-top-small padding-right-mini">
+        <button type="button" class="btn btn-default dropdown-toggle btn-custom" ng-click="gotoContacts()">
+            <i class="fa fa-mail-reply"></i>
+        </button>
+        <!--<a class="fa fa-undo"></a>-->
+    </div>
+    <div class="btn-group dropup pull-left padding-top-small padding-left-mini" dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-default dropdown-toggle btn-custom"  ng-disabled="true">
+            <i class="fa fa-align-justify"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a ng-click="tellFriend()"><i class="fa fa-share-alt"></i>&nbsp;Tell a friend</a></li>
+            <li><a ng-click="goToPhoneContactsPage()"><i class="fa fa-th-list"></i>&nbsp;Contacts</a></li>
+            <li><a ng-click="refreshContacts()"><i class="fa fa-refresh"></i>&nbsp;Refresh</a></li>
+            <li><a ng-click="goToHelpPage()"><i class="fa fa-question-circle"></i>&nbsp;Help</a></li>
+        </ul>
+    </div>
+    <div class="padding-top-small" style="text-align: center;padding-left: 2px;">
+        <button type="button" class="btn btn-default dropdown-toggle btn-custom" ng-click="gotoHistory()">
+            <i class="fa fa-home"></i>
+        </button>
+    </div>
+</div>
