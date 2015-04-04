@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Tattlez</title>
+    <link href="app/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="app/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="app/css/tattlez.css" rel="stylesheet" />
+    <link href="app/css/emoji.min.css" rel="stylesheet" />
+    <link href="app/css/widths.css" rel="stylesheet" />
+    <link href="app/vendor/videogular-themes-default/videogular.css" rel="stylesheet" />
+</head>
+<body ng-controller="appCtrl">
+	
+    <div class="container-fluid" ui-view>
+    </div>
+    <script src="cordova.js" type="text/javascript"></script>
+    <script src="app/scripts/vendorjs/hark.bundle.js" type="text/javascript"></script>
+    <script src="app/scripts/vendorjs/RTCPeerConnection.js" type="text/javascript"></script>
+    <script src="app/scripts/socket.io.client.js" type="text/javascript"></script>
+    <script src="app/scripts/vendorjs/socket.io-stream.js" type="text/javascript"></script>
+    <script src="app/vendor/requirejs/require.js" data-main="app/scripts/main.js"></script>
+</body>
+</html>

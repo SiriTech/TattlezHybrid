@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h3 class="modal-title">Provide the OTP</h3>
+</div>
+<div class="modal-body">
+    <p>Enter the OTP (one time password) that you have received on your mobile here.
+        <input class="form-control" type="text" placeholder="Place OTP" ng-model="otpResponse">
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="close()">Cancel</button>
+    <button class="btn btn-success" ng-click="sendOtpResponse(otpResponse)">Validate</button>
+</div>

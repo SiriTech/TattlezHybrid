@@ -1,0 +1,22 @@
+﻿<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand"><span ng-bind="contactDetails.contactName"></span></a>
+      
+    </div>
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="content chat-form">
+	<div ng-repeat="msg in msgs track by $index">
+		<span>{{msg.message}}</span>
+	</div>
+</div>
+<div class="form-group div-chat-message">
+	<div class="col-xs-1">smile</div>
+	<div class="col-xs-10">
+		<text-angular name="chatEditor" ng-model="newMsg" placeholder="Enter message" ng-enter="addMessage(contactId)" ta-toolbar="[]"></text-angular>
+		<textarea class="form-control input-lg" style="display: none;" ng-model="newMsg" placeholder="Enter message"></textarea>
+	</div>
+	<div class="col-xs-1">files</div>
+</div>
